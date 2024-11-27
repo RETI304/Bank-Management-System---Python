@@ -5,7 +5,7 @@ from email.message import EmailMessage
 import datetime
 import ssl
 
-# Connect to MySQL Database
+
 def connect_db():
     return pymysql.connect(
         host="localhost",
@@ -14,7 +14,7 @@ def connect_db():
         database="banking"
     )
 
-# Register a new customer
+
 def register_customer(name, email, phone_number, address):
     db = connect_db()
     cursor = db.cursor()
@@ -24,7 +24,7 @@ def register_customer(name, email, phone_number, address):
     db.close()
     print("Customer registration successful!")
 
-# Create an account for a customer
+
 def create_account(customer_id, password, pin, balance=0.00):
     db = connect_db()
     cursor = db.cursor()
@@ -34,7 +34,7 @@ def create_account(customer_id, password, pin, balance=0.00):
     db.close()
     print("Account created successfully!")
 
-# Authenticate customer login
+
 def login_customer(email, password):
     db = connect_db()
     cursor = db.cursor()
@@ -44,7 +44,7 @@ def login_customer(email, password):
     db.close()
     return user
 
-# Deposit money into an account
+
 def deposit(account_id, amount):
     db = connect_db()
     cursor = db.cursor()
@@ -55,7 +55,7 @@ def deposit(account_id, amount):
     db.close()
     print(f"Deposited Rs. {amount}.")
 
-# Withdraw money from an account
+
 def withdraw(account_id, amount):
     db = connect_db()
     cursor = db.cursor()
@@ -72,7 +72,7 @@ def withdraw(account_id, amount):
         db.close()
         print("Insufficient balance!")
 
-# View transaction history
+
 def view_transactions(account_id):
     db = connect_db()
     cursor = db.cursor()
@@ -85,7 +85,7 @@ def view_transactions(account_id):
     else:
         print("No transactions found.")
 
-# View account balance
+
 def view_balance(account_id):
     db = connect_db()
     cursor = db.cursor()
@@ -94,10 +94,7 @@ def view_balance(account_id):
     db.close()
     print(f"Your balance is: Rs. {balance}")
 
-# Send OTP email for PIN change
 
-
-# Main menu
 def main_menu(account_id):
     while True:
         print("\nBank Menu:")
@@ -125,7 +122,7 @@ def main_menu(account_id):
         else:
             print("Invalid choice. Please try again.")
 
-# User login
+
 def login():
     email = input("Enter email: ")
     password = input("Enter password: ")
@@ -137,7 +134,7 @@ def login():
     else:
         print("Invalid credentials.")
 
-# User registration
+
 def register():
     name = input("Enter your name: ")
     email = input("Enter your email: ")
@@ -155,7 +152,7 @@ def register():
     create_account(customer_id, password, pin)
     db.close()
 
-# Main function
+
 if __name__ == "__main__":
     print("Welcome to the Online Bank System!")
     while True:
